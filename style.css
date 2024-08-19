@@ -1,0 +1,41 @@
+:root {
+    --main-color : #3b4890;
+    --main-color-bright : #5361b0;
+    font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", arial, Dotum, 돋움, sans-serif;
+}
+html {
+    background-color: #eee;
+    width: 18rem;
+}
+#main-container {
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    background-color: #fff;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.desc {
+    height: 2rem;
+}
+.item {
+    width: 6rem;
+    height: 3rem;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    box-shadow: 0 2px 2px rgba(0,0,0,0.12), 0 3px 5px rgba(0,0,0,0.25);
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+    line-height: 2.9rem;
+    user-select: none;
+    transition: background-color .1s, color .1s;
+}
+.item:hover {
+    background-color: var(--main-color-bright);
+}
+.item:active {
+    color: var(--main-color-bright);
+}
