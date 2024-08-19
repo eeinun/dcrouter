@@ -4,13 +4,14 @@
     "description": "Mobile-PC routing",
     "version": "1.0",
     "background": {
-        "service-worker": "worker.js"
+        "service_worker": "service-worker.js",
+        "type": "module"
     },
     "icons": {
         "128": "ext.png"
     },
     "action": {
-        "default_popup": "index.html"
+        "default_popup": "popup.html"
     },
     "permissions": [
         "storage"

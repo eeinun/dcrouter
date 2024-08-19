@@ -5,7 +5,14 @@ window.onload = function () {
     var btnClickHandler = () => {
         target = target === 'PC' ? 'MOBILE' : 'PC';
         button.innerText = target;
-        console.log(target)
+        chrome.runtime.sendMessage({
+                type: 'target',
+                payload: {
+                    message: target,
+                },
+            },
+            (response) => {}
+        );
     }
     button.addEventListener('click', btnClickHandler);
 }
