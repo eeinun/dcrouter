@@ -7,6 +7,7 @@ window.onload = function () {
     });
     var btnClickHandler = () => {
         activate = activate === 'ON' ? 'OFF' : 'ON';
+        history.go(0);
         button.innerText = activate;
         chrome.runtime.sendMessage({
                 type: 'activate',
