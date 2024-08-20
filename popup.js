@@ -1,14 +1,14 @@
 
 window.onload = function () {
     button = document.getElementById("toggle");
-    target = 'PC'
+    activate = 'ON'
     var btnClickHandler = () => {
-        target = target === 'PC' ? 'MOBILE' : 'PC';
-        button.innerText = target;
+        activate = activate === 'ON' ? 'OFF' : 'ON';
+        button.innerText = activate;
         chrome.runtime.sendMessage({
-                type: 'target',
+                type: 'activate',
                 payload: {
-                    message: target,
+                    message: activate,
                 },
             },
             (response) => {}

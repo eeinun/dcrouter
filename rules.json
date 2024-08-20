@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "redirect",
+            "redirect": {
+                "regexSubstitution": "https://gall.dcinside.com/board/lists/?id=\\1&no=\\2"
+            }
+        },
+        "condition": {
+            "regexFilter": "https://m.dcinside.com/board/([a-zA-Z]*)/([0-9]*)",
+            "resourceTypes": ["main_frame", "sub_frame"]
+        }
+    }
+]
