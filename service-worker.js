@@ -1,12 +1,16 @@
 var activate = 'ON'
+console.log("Start serviceworker.js")
 
 // script.js의 activate 받기
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.type === 'activate') {
         console.log(request.payload.message);
-        activate = request.payload;
+        activate = request.payload.message;
     }
-    sendResponse({});
+    else if (request.type === 'init') {
+        console.log(request.type);
+        sendResponse({payload: {message: activate}});
+    }
 })
 // 리디렉션 url (a 태그 href 속성) 수정
 function urlTranslation() {
@@ -16,11 +20,11 @@ function urlTranslation() {
         if (src.includes("m.dcinside.com")) {
             let m = src.match(mobile_url_page);
             if (m) { 
-                return "https://gall.dcinside.com/" + "board/view/?id=" + m[2] + "&no=" + m[3];
+                return "https://gall.dcinside.com/" + (m[1] == undefined ? "" : m[1]) + "board/view/?id=" + m[2] + "&no=" + m[3];
             }
             m = src.match(mobile_url_main);
             if (m) {
-                return "https://gall.dcinside.com/" + "board/lists/?id=" + m[3];
+                return "https://gall.dcinside.com/" + (m[1] == undefined ? "" : m[1]) + "board/lists/?id=" + m[3];
             }
         }
         return src;

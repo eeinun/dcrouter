@@ -1,7 +1,10 @@
-
+var activate;
 window.onload = function () {
     button = document.getElementById("toggle");
-    activate = 'ON'
+    chrome.runtime.sendMessage({ type: "init" }, (response) => {
+        button.innerText = response.payload.message;
+        activate = button.innerText;
+    });
     var btnClickHandler = () => {
         activate = activate === 'ON' ? 'OFF' : 'ON';
         button.innerText = activate;
@@ -10,8 +13,7 @@ window.onload = function () {
                 payload: {
                     message: activate,
                 },
-            },
-            (response) => {}
+            }
         );
     }
     button.addEventListener('click', btnClickHandler);
