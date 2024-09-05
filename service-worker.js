@@ -8,9 +8,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         activate = request.payload.message;
         if (activate === "ON") {
             chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-                chrome.tabs.reload(tabs[0].id);
             });
         }
+        chrome.tabs.reload(tabs[0].id);
     }
     else if (request.type === 'init') {
         console.log(request.type);
@@ -20,8 +20,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // 리디렉션 url (a 태그 href 속성) 수정
 function urlTranslation() {
     function rule(src) {
-        const mobile_url_page = new RegExp("https:\/\/m.dcinside.com\/(mini\/|index\.php\/)?board\/([0-9a-zA-Z_]+)\/([0-9]+)")
-        const mobile_url_main = new RegExp("https:\/\/m.dcinside.com\/(mini\/)?(board\/)?([0-9a-zA-Z_]+)")
+        const mobile_url_page = new RegExp("https:\/\/m.dcinside.com\/(mini|index\.php\/board|board)\/([0-9a-zA-Z_]+)\/([0-9]+).*")
+        const mobile_url_main = new RegExp("https:\/\/m.dcinside.com\/(mini|board)\/([0-9a-zA-Z_]+).*")
         if (src.includes("m.dcinside.com")) {
             let m = src.match(mobile_url_page);
             if (m) {
